@@ -1,1 +1,1 @@
-Tutorial project from Pluralsight course, using React, GraphQL and Relay
+Tutorial project from Pluralsight course. It uses React, GraphQL and Relay
