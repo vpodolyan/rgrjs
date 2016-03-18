@@ -1,1 +1,1 @@
-Project from Pluralsight course
+Tutorial project from Pluralsight course, using React, GraphQL and Relay
