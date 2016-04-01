@@ -1,10 +1,17 @@
 import express from "express";
+import schema from "./data/schema";
+import GraphQLHTTP from "express-graphql";
 
 import {MongoClient} from "mongodb";
 
 let app = express();
 
 app.use(express.static("public"));
+
+app.use("/graphql", GraphQLHTTP({
+  schema: schema,
+  graphiql: true
+}));
 
 // MongoDb url is expected as first cli argument, default url otherwise
 let mongoUrl = process.argv[2] ? process.argv[2] : "mongodb://rgrjs:123456@ds025469.mlab.com:25469/rgrjs";
@@ -14,7 +21,7 @@ MongoClient.connect(mongoUrl, (err, database) => {
 
   db = database;
   console.log(process.env.MONGO_URL);
-  app.listen(3000, () => console.log("Listening on port 3000"));
+
 });
 
 app.get("/data/links", (req, res) => {
