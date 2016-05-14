@@ -4,7 +4,7 @@
   "description": "Educational project from Pluralsight",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js --exec babel-node --presets react,es2015"
+    "start": "nodemon server.js --exec babel-node"
   },
   "repository": {
     "type": "git",
