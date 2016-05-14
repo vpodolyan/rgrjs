@@ -14,13 +14,14 @@ app.use("/graphql", GraphQLHTTP({
 }));
 
 // MongoDb url is expected as first cli argument, default url otherwise
-let mongoUrl = process.argv[2] ? process.argv[2] : "mongodb://rgrjs:123456@ds025469.mlab.com:25469/rgrjs";
+let mongoUrl = "mongodb://rgrjs:123456@ds025469.mlab.com:25469/rgrjs";
 let db
+
+console.log(mongoUrl);
 MongoClient.connect(mongoUrl, (err, database) => {
   if (err) throw err;
 
   db = database;
-  console.log(process.env.MONGO_URL);
 
 });
 
@@ -31,3 +32,5 @@ app.get("/data/links", (req, res) => {
     res.json(links);
   });
 });
+
+app.listen(3000);
