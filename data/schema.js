@@ -2,9 +2,18 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString
+  GraphQLString,
+  GraphQLList
 } from "graphql"
 
+let linkType = new GraphQLObjectType({
+  name: "Link",
+  fields: () => ({
+    _id: { type: GraphQLString },
+    title: { type: GraphQLString },
+    url: { type: GraphQLString }
+  })
+});
 let counter = 42;
 
 let schema = new GraphQLSchema({
@@ -18,6 +27,10 @@ let schema = new GraphQLSchema({
       message: {
         type: GraphQLString,
         resolve: () => "Hello GraphQL!"
+      },
+      links: {
+          type: linkType,
+          resolve: () => {} // TODO: Read from MongoDb
       }
     })
   }),
